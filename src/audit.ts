@@ -72,7 +72,8 @@ function analyseDrawings(n: number, drawings: number): void {
     console.log("\n");
 }
 
-for (let i = 2; i <= 1000; i = Math.max(i + 1, i * 1.2)) {
+for (let i = 2; i <= 100; i = Math.max(i + 1, i * 1.2)) {
     const p = Math.floor(i);
-    analyseDrawings(p, p * 100e3);
+    const d = Math.max(1e6, p * 100e3);
+    analyseDrawings(p, d);
 }
