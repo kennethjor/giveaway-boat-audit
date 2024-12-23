@@ -1,4 +1,5 @@
 import {randomBytes} from "node:crypto";
+import {MathNumericType, max, mean, min, std} from "mathjs";
 
 // Supplied by Awesome Stickz on 2024-12-23
 function getWeightedCryptoRandomElement<T>(elements: { value: T; weight: number }[]) {
@@ -49,6 +50,27 @@ function simulateDrawings(n: number, drawings: number): number[] {
     return winners;
 }
 
-for (let i = 0; i < 10; i++) {
-    console.log(simulateDrawings(10, 10));
+function analyseDrawings(n: number, drawings: number): void {
+    console.log(`Simulating ${n} participants in ${drawings} drawings`);
+    const simulation = simulateDrawings(n, drawings);
+    const stats: any = {
+        expected: 1 / n,
+        mean: mean(simulation),
+        min: min(simulation),
+        max: max(simulation),
+        range: max(simulation) - min(simulation),
+        stddev: std(...simulation)
+    };
+    stats.stddev_rel = stats.stddev / stats.expected;
+    stats.range = stats.max - stats.min;
+    stats.range_rel = stats.range / stats.expected;
+    stats.mean_err = stats.mean - stats.expected;
+    stats.mean_err_rel = stats.mean_err / stats.expected;
+    console.log(stats);
+    console.log("\n");
+}
+
+for (let i = 2; i <= 1000; i = Math.max(i + 1, i * 1.2)) {
+    const p = Math.floor(i);
+    analyseDrawings(p, 1e6);
 }
