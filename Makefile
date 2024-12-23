@@ -6,7 +6,7 @@ compile:
 
 audit: compile
 	date -u > audit.log
-	node build/audit.js  | tee audit.log
+	time node build/audit.js 2>&1 | tee -a audit.log
 
 clean:
 	rm -R build
