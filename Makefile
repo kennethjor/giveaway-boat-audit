@@ -5,7 +5,8 @@ compile:
 	npx tsc
 
 audit: compile
-	node build/audit.js
+	date -u > audit.log
+	node build/audit.js  | tee audit.log
 
 clean:
 	rm -R build
