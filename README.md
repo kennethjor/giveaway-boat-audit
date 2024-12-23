@@ -6,3 +6,5 @@ The methods used in this audit are not exhaustive, and probably a bit ghetto to 
 statistical analysis, but my goal was to confirm the algorithm didn't contain any obvious bias.
 
 So is the algorithm good? **Yes, it's fine!**
+
+See [audit.log](https://github.com/kennethjor/giveaway-boat-audit/blob/main/audit.log) for audit output.
