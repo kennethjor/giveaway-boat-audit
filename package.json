@@ -1,6 +1,10 @@
 {
-  "type": "module",
-  "dependencies": {
+  "scripts": {
+    "audit": "node ./build/audit.js",
+    "start": "node --loader ts-node/esm ./build/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
     "typescript": "^5.7.2"
   }
 }

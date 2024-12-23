@@ -2,7 +2,10 @@ init:
 	npm install
 
 compile:
-	npx tsc --declarationMap --outDir build/ *.ts
+	npx tsc
 
-audit:
-	npx ts-node audit.ts
+audit: compile
+	node build/audit.js
+
+clean:
+	rm -R build
